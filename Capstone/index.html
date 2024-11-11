@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet'>
+    <script src="script.js" defer></script> 
+    <title>Color Anomaly Detection</title>
+</head>
+<body>
+    <h1>Color Anomaly Detection</h1>
+    <h2>By: EV, Seth, and Joe</h2>
+
+    <!-- Image processor section -->
+    <div id="full-image-processor">
+        <div class="selector">
+            <h3>Upload Image</h3>
+            <input type="file" id="image-input">
+            <img id="photo" alt="Upload Image Here">
+            <canvas id="canvas" style="display: none;"></canvas>
+        </div>
+
+        <!-- Anomaly color selection buttons -->
+        <div class="selector">
+            <h3>Select Anomaly Color</h3>
+            <button onclick="detectAnomalies('yellow')">Yellow Anomalies</button>
+            <button onclick="detectAnomalies('red')">Red Anomalies</button>
+            <button onclick="detectAnomalies('green')">Green Anomalies</button>
+            <button onclick="detectAnomalies('blue')">Blue Anomalies</button>
+        </div>
+        
+
+<!-- New checkbox for toggling mouse coordinates tooltip -->
+<div class="selector">
+    <label>
+        <input type="checkbox" id="toggle-coordinates" onchange="toggleCoordinateDisplay()"> 
+        Show Mouse Coordinates
+    </label>
+</div>
+
+    </div>
+
+    <!-- Output for detected coordinates -->
+    <div id="coordinates-output">
+        <h3>Detected Anomalies Coordinates:</h3>
+        <ul id="coordinates-list"></ul>
+    </div>
+</body>
+</html>
