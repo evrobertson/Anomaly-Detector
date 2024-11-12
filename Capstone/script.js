@@ -153,7 +153,7 @@ function highlightAnomaly(anomalyIndex) {
     let selectedCoord = detectedCoords[anomalyIndex];
     drawCircle(ctx, selectedCoord.x, selectedCoord.y, "yellow", 5);
 }
-// Function to calculate and display color difference between anomaly and background
+// Function to calculate and display color difference between anomaly and background in an info box
 function showColorDifference(x, y) {
     // Get the canvas and its drawing context
     let canvas = document.getElementById('canvas');
@@ -173,24 +173,22 @@ function showColorDifference(x, y) {
         Math.pow(anomalyColor.b - backgroundColor.b, 2)
     );
 
-    // Get the tooltip element from the DOM
-    let tooltip = document.getElementById("color-difference-tooltip");
+    // Get the info box and set its content
+    let infoBox = document.getElementById("info-box");
+    let infoBoxContent = document.getElementById("info-box-content");
 
-    // Set the tooltip's content with color difference data
-    tooltip.textContent = `Color Difference: ${colorDifference.toFixed(2)}
-    Anomaly RGB: (${anomalyColor.r}, ${anomalyColor.g}, ${anomalyColor.b})
-    Background RGB: (${backgroundColor.r.toFixed(2)}, ${backgroundColor.g.toFixed(2)}, ${backgroundColor.b.toFixed(2)})`;
+    // Set the color difference information as the content of the info box
+    infoBoxContent.innerHTML = `
+        <strong>Color Difference:</strong> ${colorDifference.toFixed(2)}<br>
+        <strong>Anomaly RGB:</strong> (${anomalyColor.r}, ${anomalyColor.g}, ${anomalyColor.b})<br>
+        <strong>Background RGB:</strong> (${backgroundColor.r.toFixed(2)}, ${backgroundColor.g.toFixed(2)}, ${backgroundColor.b.toFixed(2)})
+    `;
 
-    // Position the tooltip near the cursor
-    tooltip.style.left = `${x + 10}px`; // Offset position by 10 pixels for visibility
-    tooltip.style.top = `${y + 10}px`;
-
-    // Display the tooltip
-    tooltip.style.display = 'block';
-
-    // Hide the tooltip after a short delay (optional)
-    setTimeout(() => { tooltip.style.display = 'none'; }, 3000);
+    // Display the info box
+    infoBox.style.display = 'block';
 }
+
+
 
 // Global variable to track tooltip visibility
 let showCoordinates = false;
@@ -233,3 +231,8 @@ function showCoordinatesOnHover() {
 
 // Call function to activate coordinate display on hover
 showCoordinatesOnHover();
+
+// Event listener to close the info box
+document.getElementById("info-box-close").addEventListener("click", function() {
+    document.getElementById("info-box").style.display = 'none';
+});
