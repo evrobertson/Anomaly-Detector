@@ -116,6 +116,7 @@ function detectAnomalies(color) {
                     listItem.textContent = `(${x}, ${y})`;
                     listItem.dataset.anomalyIndex = anomalyIndex;
                     listItem.classList.add("clickable-coordinate");
+                    listItem.addEventListener("click", () => showColorDifference(x, y));
                     listItem.addEventListener("click", () => highlightAnomaly(anomalyIndex));
                     coordinatesList.appendChild(listItem);
 
@@ -152,6 +153,45 @@ function highlightAnomaly(anomalyIndex) {
     let selectedCoord = detectedCoords[anomalyIndex];
     drawCircle(ctx, selectedCoord.x, selectedCoord.y, "yellow", 5);
 }
+// Function to calculate and display color difference between anomaly and background
+function showColorDifference(x, y) {
+    // Get the canvas and its drawing context
+    let canvas = document.getElementById('canvas');
+    let ctx = canvas.getContext('2d');
+
+    // Get the RGB values of the selected anomaly pixel
+    let imageData = ctx.getImageData(x, y, 1, 1).data;
+    let anomalyColor = { r: imageData[0], g: imageData[1], b: imageData[2] };
+
+    // Calculate background color using an existing function
+    let backgroundColor = calculateBackgroundColor(ctx.getImageData(0, 0, canvas.width, canvas.height));
+
+    // Calculate the Euclidean color distance between anomaly and background
+    let colorDifference = Math.sqrt(
+        Math.pow(anomalyColor.r - backgroundColor.r, 2) +
+        Math.pow(anomalyColor.g - backgroundColor.g, 2) +
+        Math.pow(anomalyColor.b - backgroundColor.b, 2)
+    );
+
+    // Get the tooltip element from the DOM
+    let tooltip = document.getElementById("color-difference-tooltip");
+
+    // Set the tooltip's content with color difference data
+    tooltip.textContent = `Color Difference: ${colorDifference.toFixed(2)}
+    Anomaly RGB: (${anomalyColor.r}, ${anomalyColor.g}, ${anomalyColor.b})
+    Background RGB: (${backgroundColor.r.toFixed(2)}, ${backgroundColor.g.toFixed(2)}, ${backgroundColor.b.toFixed(2)})`;
+
+    // Position the tooltip near the cursor
+    tooltip.style.left = `${x + 10}px`; // Offset position by 10 pixels for visibility
+    tooltip.style.top = `${y + 10}px`;
+
+    // Display the tooltip
+    tooltip.style.display = 'block';
+
+    // Hide the tooltip after a short delay (optional)
+    setTimeout(() => { tooltip.style.display = 'none'; }, 3000);
+}
+
 // Global variable to track tooltip visibility
 let showCoordinates = false;
 

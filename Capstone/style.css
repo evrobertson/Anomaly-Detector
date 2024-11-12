@@ -144,6 +144,18 @@ button:active {
     display: none; /* Hidden by default, will be shown when hovering */
     pointer-events: none; /* Allows clicking through the tooltip */
 }
+/* Tooltip styling for color difference display */
+.color-difference-tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    color: #ffffff; /* White text color */
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    display: none; /* Hidden by default */
+    pointer-events: none; /* Allows clicks to pass through the tooltip */
+    z-index: 10;
+}
 
 
 
