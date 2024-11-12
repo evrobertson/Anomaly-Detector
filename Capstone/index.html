@@ -3,58 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet'>
-    <script src="script.js" defer></script> 
     <title>Color Anomaly Detection</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Color Anomaly Detection</h1>
-    <h2>By: EV, Seth, and Joe</h2>
 
-    <!-- Image processor section -->
-    <div id="full-image-processor">
-        <div class="selector">
-            <h3>Upload Image</h3>
-            <input type="file" id="image-input">
-            <img id="photo" alt="Upload Image Here">
-            <canvas id="canvas" style="display: none;"></canvas>
-        </div>
+<!-- Page title and subtitle -->
+<h1>Color Anomaly Detection</h1>
+<h2>By: EV, Seth, and Joe</h2>
 
-        <!-- Anomaly color selection buttons -->
-        <div class="selector">
-            <h3>Select Anomaly Color</h3>
-            <button class="yellow-button" onclick="detectAnomalies('yellow')">Yellow Anomalies</button>
-            <button class="red-button" onclick="detectAnomalies('red')">Red Anomalies</button>
-            <button class="green-button" onclick="detectAnomalies('green')">Green Anomalies</button>
-            <button class="blue-button" onclick="detectAnomalies('blue')">Blue Anomalies</button>
-        </div>
-        
-        
+<!-- Main container that holds the image and button sections -->
+<div id="main-container">
 
-<!-- New checkbox for toggling mouse coordinates tooltip -->
-<div class="selector">
-    <label>
-        <input type="checkbox" id="toggle-coordinates" onchange="toggleCoordinateDisplay()"> 
-        Show Mouse Coordinates
-    </label>
+    <!-- Image container for uploading and displaying images -->
+    <div id="image-container">
+        <h3>Upload Image</h3>
+        <input type="file" id="image-input">
+        <img id="photo" alt="Upload Image Here">
+        <canvas id="canvas" style="display: none;"></canvas>
+    </div>
+
+    <!-- Button container for anomaly detection buttons and options -->
+    <div id="button-container">
+        <h3>Select Anomaly Color</h3>
+        <!-- Buttons for selecting anomaly color -->
+        <button class="yellow-button" onclick="detectAnomalies('yellow')">Yellow Anomalies</button>
+        <button class="red-button" onclick="detectAnomalies('red')">Red Anomalies</button>
+        <button class="green-button" onclick="detectAnomalies('green')">Green Anomalies</button>
+        <button class="blue-button" onclick="detectAnomalies('blue')">Blue Anomalies</button>
+
+        <!-- Checkbox for showing mouse coordinates -->
+        <label>
+            <input type="checkbox" id="toggle-coordinates" onchange="toggleCoordinateDisplay()">
+            Show Mouse Coordinates
+        </label>
+    </div>
 </div>
 
-    </div>
+<!-- Output section for displaying detected anomaly coordinates -->
+<div id="coordinates-output">
+    <h3>Detected Anomalies Coordinates:</h3>
+    <ul id="coordinates-list"></ul>
+</div>
 
-    <!-- Output for detected coordinates -->
-    <div id="coordinates-output">
-        <h3>Detected Anomalies Coordinates:</h3>
-        <ul id="coordinates-list"></ul>
-    </div>
-
-   <!-- Info box for displaying color difference data -->
+<!-- Info box for displaying color difference data when an anomaly is clicked -->
 <div id="info-box" class="info-box">
     <span id="info-box-close" class="info-box-close">&times;</span>
     <div id="info-box-content"></div>
 </div>
 
-
+<script src="script.js"></script>
 </body>
 </html>

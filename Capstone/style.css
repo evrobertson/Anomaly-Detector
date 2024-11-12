@@ -1,153 +1,118 @@
-/* Body styling */
+/* General body styling */
 body {
-    background-color: #373777;
-    font-family: 'Rubik', sans-serif;
+    font-family: Arial, sans-serif;
     color: #ffffff;
-    margin: 0;
-    padding: 0;
+    background-color: #2d2b55;
+    text-align: center;
+}
+
+/* Styling for main title and subtitle */
+h1 {
+    font-size: 2.5em;
+    color: #ff5470;
+}
+
+h2 {
+    font-size: 1.5em;
+    color: #ff5470;
+}
+
+/* Main container styling to arrange the layout */
+#main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Header styling */
-h1, h3 {
-    font-family: 'Orbitron', sans-serif;
-    color: #ff2957;
-}
-
-/* Sub-header styling */
-h2 {
-    font-size: 15px;
+/* Style for the image container to make the image larger */
+#image-container {
+    width: 80%;
+    max-width: 900px;
+    text-align: center;
     margin-bottom: 20px;
 }
 
-/* Input file styling */
-input[type="file"] {
-    border: none;
-    margin-top: 10px;
-}
-
-/* Full image processor styling */
-#full-image-processor {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    max-width: 900px;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-/* Selector container styling */
-.selector {
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 45%;
-}
-
-/* Uploaded image styling */
 #photo {
-    max-width: 100%;
-    max-height: 400px;
+    width: 100%;
+    max-height: 600px;
     margin-top: 10px;
 }
 
-/* Canvas styling for anomaly detection */
 #canvas {
-    display: none;
-    max-width: 100%;
-    max-height: 400px;
+    width: 100%;
+    max-height: 600px;
     margin-top: 10px;
     border: 1px solid #ffffff;
 }
 
-/* Button styling for color selection */
+/* Style for the button container to make buttons smaller and more compact */
+#button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    width: 80%;
+    max-width: 900px;
+}
+
+#button-container h3 {
+    width: 100%;
+    text-align: center;
+}
+
+/* Button styling for anomaly color selection */
 button {
-    padding: 10px 20px;
+    padding: 8px 15px;
+    font-size: 12px;
     margin: 5px;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Rubik', sans-serif;
-    font-size: 14px;
     color: #ffffff;
-    transition: background-color 0.3s;
+    cursor: pointer;
 }
 
-button:hover {
-    opacity: 0.9;
-}
-
-button:active {
-    opacity: 0.8;
-}
-
-/* Button colors for each anomaly color */
 .yellow-button {
-    background-color: #eefb00; /* Yellow */
-    color: white; /* Optional: Adjust text color */
+    background-color: #eefb00;
 }
 
 .red-button {
-    background-color: #fc2d08; /* Red */
-    color: white;
+    background-color: #fc2d08;
 }
 
 .green-button {
-    background-color: #32CD32; /* Green */
-    color: white;
+    background-color: #32CD32;
 }
 
 .blue-button {
-    background-color: #1285f8; /* Blue */
-    color: white;
+    background-color: #1285f8;
 }
 
-
-
-/* Styling for clickable coordinates */
-.clickable-coordinate {
-    cursor: pointer;
-    color: #ff2957;
-    font-weight: bold;
-    padding: 8px 12px;
-    margin: 5px 0;
-    border: 2px solid #ff2957;
-    border-radius: 5px;
-    text-align: center;
-    background-color: rgba(255, 41, 87, 0.1);
-    transition: background-color 0.3s, border-color 0.3s;
-    display: inline-block;
+/* Style for the checkbox label */
+#button-container label {
+    font-size: 14px;
+    color: #ffffff;
 }
 
-.clickable-coordinate:hover {
-    background-color: rgba(255, 41, 87, 0.2);
-    border-color: #ff2957;
-}
-
-/* Coordinates output styling */
+/* Style for coordinates output container */
 #coordinates-output {
     background-color: rgba(0, 0, 0, 0.4);
+    width: 80%;
+    max-width: 900px;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: left;
 }
-/* Tooltip styling */
-#coordinate-tooltip {
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #ffffff;
-    padding: 5px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    display: none; /* Hidden by default, will be shown when hovering */
-    pointer-events: none; /* Allows clicking through the tooltip */
-}
+
 /* Info box styling */
 .info-box {
     position: fixed;
-    top: 20px; /* Adjusted to place it at the top-right corner */
+    top: 20px; /* Position at the top-right corner */
     right: 20px;
     width: 250px;
     padding: 15px;
@@ -159,7 +124,7 @@ button:active {
     z-index: 1000;
 }
 
-/* Close button styling */
+/* Close button styling for info box */
 .info-box-close {
     position: absolute;
     top: 5px;
